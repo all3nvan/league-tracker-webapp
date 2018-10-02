@@ -3,7 +3,13 @@ import "LeagueTrackerWebapp.scss";
 
 class LeagueTrackerWebapp extends Component {
   render() {
-    return <div className="LeagueTrackerWebapp test">Test</div>;
+    return (
+      <section className="section">
+        <div className="container">
+          <h1 className="title test">League Tracker</h1>
+        </div>
+      </section>
+    );
   }
 }
 
