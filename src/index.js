@@ -1,8 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./index.css";
+
+import "index.scss";
 import LeagueTrackerWebapp from "LeagueTrackerWebapp";
-import * as serviceWorker from "./serviceWorker";
+import * as serviceWorker from "serviceWorker";
 
 ReactDOM.render(<LeagueTrackerWebapp />, document.getElementById("root"));
 

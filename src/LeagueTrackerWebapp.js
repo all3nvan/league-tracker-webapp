@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import "./LeagueTrackerWebapp.css";
+import "LeagueTrackerWebapp.scss";
 
 class LeagueTrackerWebapp extends Component {
   render() {
-    return <div className="LeagueTrackerWebapp">Test</div>;
+    return <div className="LeagueTrackerWebapp test">Test</div>;
   }
 }
 
