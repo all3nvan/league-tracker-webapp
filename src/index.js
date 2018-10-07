@@ -1,11 +1,18 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { Provider } from "react-redux";
 
 import "index.scss";
 import LeagueTrackerWebapp from "LeagueTrackerWebapp";
+import store from "redux/store";
 import * as serviceWorker from "serviceWorker";
 
-ReactDOM.render(<LeagueTrackerWebapp />, document.getElementById("root"));
+ReactDOM.render(
+  <Provider store={store}>
+    <LeagueTrackerWebapp />
+  </Provider>,
+  document.getElementById("root")
+);
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

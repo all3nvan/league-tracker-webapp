@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 import "LeagueTrackerWebapp.scss";
-import MatchHistory from "match-history/MatchHistory";
+import MatchHistoryContainer from "match-history/MatchHistoryContainer";
 import Navbar from "nav/Navbar";
 
 class LeagueTrackerWebapp extends Component {
@@ -9,7 +9,7 @@ class LeagueTrackerWebapp extends Component {
     return (
       <>
         <Navbar />
-        <MatchHistory />
+        <MatchHistoryContainer />
       </>
     );
   }
