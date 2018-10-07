@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 
-import NewMatchInput from "match-history/new-match-input/NewMatchInput";
+import NewMatchInputContainer from "match-history/new-match-input/NewMatchInputContainer";
 import "match-history/MatchHistory.scss";
 
 class MatchHistory extends Component {
   render() {
     return (
       <div className="match-history">
-        <NewMatchInput />
+        <NewMatchInputContainer />
       </div>
     );
   }

@@ -19,9 +19,10 @@ class NewMatchInput extends Component {
   };
 
   submit = () => {
-    console.log(this.state.newMatchId);
+    this.props.onSubmit(this.state.newMatchId);
   };
 
+  // TODO: validate that match id is a number
   render() {
     return (
       <>
@@ -40,5 +41,7 @@ class NewMatchInput extends Component {
     );
   }
 }
+
+// TODO: prop types
 
 export default NewMatchInput;

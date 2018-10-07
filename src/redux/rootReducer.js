@@ -1,10 +1,5 @@
 import { combineReducers } from "redux";
 
-const test = (state = { testKey: "testValue" }, action) => {
-  switch (action.type) {
-    default:
-      return state;
-  }
-};
+import matches from "redux/match/reducers";
 
-export default combineReducers({ test });
+export default combineReducers({ matches });
