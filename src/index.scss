@@ -1,3 +1,4 @@
 @import "~bulma/css/bulma.css";
 
-$primary-color: red;
+@import "styles/theme.scss";
+@import "styles/override.scss";

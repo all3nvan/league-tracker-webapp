@@ -1,14 +1,16 @@
 import React, { Component } from "react";
+
 import "LeagueTrackerWebapp.scss";
+import MatchHistory from "match-history/MatchHistory";
+import Navbar from "nav/Navbar";
 
 class LeagueTrackerWebapp extends Component {
   render() {
     return (
-      <section className="section">
-        <div className="container">
-          <h1 className="title test">League Tracker</h1>
-        </div>
-      </section>
+      <>
+        <Navbar />
+        <MatchHistory />
+      </>
     );
   }
 }
