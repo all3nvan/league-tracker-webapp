@@ -1,5 +1,5 @@
 import { combineReducers } from "redux";
 
-import matches from "redux/match/reducers";
+import games from "redux/game/reducers";
 
-export default combineReducers({ matches });
+export default combineReducers({ games });

@@ -1,15 +1,15 @@
 import React, { Component } from "react";
 
-import "match-history/new-match-input/NewMatchInput.scss";
+import "match-history/new-game-input/NewGameInput.scss";
 
-class NewMatchInput extends Component {
+class NewGameInput extends Component {
   constructor(props) {
     super(props);
-    this.state = { newMatchId: "" };
+    this.state = { newGameId: "" };
   }
 
   onChange = event => {
-    this.setState({ newMatchId: event.target.value });
+    this.setState({ newGameId: event.target.value });
   };
 
   submitOnEnter = event => {
@@ -19,18 +19,18 @@ class NewMatchInput extends Component {
   };
 
   submit = () => {
-    this.props.onSubmit(this.state.newMatchId);
+    this.props.onSubmit(this.state.newGameId);
   };
 
-  // TODO: validate that match id is a number
+  // TODO: validate that game id is a number
   render() {
     return (
       <>
         <input
-          className="input new-match-input__input"
+          className="input new-game-input__input"
           type="text"
-          placeholder="Enter a new match id"
-          value={this.state.newMatchId}
+          placeholder="Enter a new game id"
+          value={this.state.newGameId}
           onChange={this.onChange}
           onKeyPress={this.submitOnEnter}
         />
@@ -44,4 +44,4 @@ class NewMatchInput extends Component {
 
 // TODO: prop types
 
-export default NewMatchInput;
+export default NewGameInput;
