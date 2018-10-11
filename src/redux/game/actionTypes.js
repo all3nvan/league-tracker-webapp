@@ -1,2 +1,3 @@
 export const START_FETCH_GAMES = "START_FETCH_GAMES";
 export const RECEIVE_GAMES = "RECEIVE_GAMES";
+export const RECEIVE_GAME = "RECEIVE_GAME";
