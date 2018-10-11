@@ -3,13 +3,13 @@ import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 
 import "index.scss";
-import LeagueTrackerWebapp from "LeagueTrackerWebapp";
+import LeagueTrackerWebappContainer from "LeagueTrackerWebappContainer";
 import store from "redux/store";
 import * as serviceWorker from "serviceWorker";
 
 ReactDOM.render(
   <Provider store={store}>
-    <LeagueTrackerWebapp />
+    <LeagueTrackerWebappContainer />
   </Provider>,
   document.getElementById("root")
 );
