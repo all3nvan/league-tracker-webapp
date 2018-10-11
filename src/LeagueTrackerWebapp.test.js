@@ -1,9 +1,17 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import LeagueTrackerWebapp from "LeagueTrackerWebapp";
+import { Provider } from "react-redux";
+
+import store from "redux/store";
+import LeagueTrackerWebappContainer from "LeagueTrackerWebappContainer";
 
 it("renders without crashing", () => {
   const div = document.createElement("div");
-  ReactDOM.render(<LeagueTrackerWebapp />, div);
+  ReactDOM.render(
+    <Provider store={store}>
+      <LeagueTrackerWebappContainer />
+    </Provider>,
+    div
+  );
   ReactDOM.unmountComponentAtNode(div);
 });
