@@ -1,0 +1,15 @@
+.game-participant {
+  font-size: 0.9em;
+}
+
+.game-participant__details {
+  display: flex;
+}
+
+.game-participant__details--red-team {
+  flex-direction: row-reverse;
+}
+
+.game-participant__stat {
+  margin: 0 2px;
+}
