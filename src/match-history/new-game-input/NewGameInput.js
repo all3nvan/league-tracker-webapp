@@ -25,7 +25,7 @@ class NewGameInput extends Component {
   // TODO: validate that game id is a number
   render() {
     return (
-      <>
+      <div className="new-game-input">
         <input
           className="input new-game-input__input"
           type="text"
@@ -37,7 +37,7 @@ class NewGameInput extends Component {
         <div className="clickable" onClick={this.submit}>
           <i className="fas fa-plus" />
         </div>
-      </>
+      </div>
     );
   }
 }

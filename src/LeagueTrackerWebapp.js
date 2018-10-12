@@ -13,7 +13,9 @@ class LeagueTrackerWebapp extends Component {
     return (
       <>
         <Navbar />
-        <MatchHistoryContainer />
+        <div className="league-tracker-webapp__main-content">
+          <MatchHistoryContainer />
+        </div>
       </>
     );
   }
