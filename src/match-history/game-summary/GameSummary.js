@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import classNames from "classnames";
 
 import "match-history/game-summary/GameSummary.scss";
-import GameParticipant from "match-history/game-summary/game-participant/GameParticipant";
+import GameParticipantContainer from "match-history/game-summary/game-participant/GameParticipantContainer";
 import teamColor from "constants/teamColor";
 
 class GameSummary extends Component {
@@ -14,7 +14,10 @@ class GameSummary extends Component {
 
   mapToParticipantElements = participants => {
     return participants.map(participant => (
-      <GameParticipant participant={participant} key={participant.id} />
+      <GameParticipantContainer
+        participant={participant}
+        key={participant.id}
+      />
     ));
   };
 

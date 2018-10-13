@@ -5,6 +5,12 @@ import "match-history/game-summary/game-participant/GameParticipant.scss";
 import teamColor from "constants/teamColor";
 
 class GameParticipant extends Component {
+  constructor(props) {
+    super(props);
+    // TODO: initialize summoner name if summonerId exists
+    this.state = { summonerName: "" };
+  }
+
   getSummonerElement = () => {
     if (this.props.participant.summonerId) {
       // TODO: return editable name field
@@ -15,8 +21,21 @@ class GameParticipant extends Component {
         className="input is-small"
         type="text"
         placeholder="Enter player name"
+        value={this.state.summonerName}
+        onChange={this.summonerNameOnChange}
+        onKeyPress={this.summonerNameOnEnter}
       />
     );
+  };
+
+  summonerNameOnChange = event => {
+    this.setState({ summonerName: event.target.value });
+  };
+
+  summonerNameOnEnter = event => {
+    if (event.key === "Enter") {
+      this.props.summonerNameOnSubmit(this.state.summonerName);
+    }
   };
 
   render() {
