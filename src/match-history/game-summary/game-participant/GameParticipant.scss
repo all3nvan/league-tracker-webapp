@@ -1,15 +1,25 @@
 .game-participant {
-  font-size: 0.9em;
+  margin: 2px 0;
 }
 
 .game-participant__details {
   display: flex;
+  align-items: center;
 }
 
-.game-participant__details--red-team {
+.game-participant__details--blue-team {
   flex-direction: row-reverse;
+  text-align: right;
 }
 
 .game-participant__stat {
   margin: 0 2px;
+}
+
+.game-participant__champion {
+  width: 8%;
+}
+
+.game-participant__kda {
+  width: 15%;
 }
