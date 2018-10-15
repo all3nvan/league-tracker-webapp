@@ -14,6 +14,7 @@ export const createGame = gameId => {
       .post("http://localhost:4000/games", { gameId: parseInt(gameId) })
       .then(response => {
         dispatch(receiveGame(response.data.game));
+        // TODO: need to fetch new participants?
       });
     // TODO: catch error
   };

@@ -2,19 +2,20 @@ import React, { Component } from "react";
 
 import "match-history/MatchHistory.scss";
 import NewGameInputContainer from "match-history/new-game-input/NewGameInputContainer";
-import GameSummary from "match-history/game-summary/GameSummary";
+import GameSummaryContainer from "match-history/game-summary/GameSummaryContainer";
 
 class MatchHistory extends Component {
-  render() {
-    const { games } = this.props;
-    const gameSummaries = games.allIds.map(gameId => {
-      return <GameSummary game={games.byIds[gameId]} key={gameId} />;
-    });
+  renderGameSummaries = () => {
+    return this.props.gameIds.map(gameId => (
+      <GameSummaryContainer game={this.props.gamesById[gameId]} key={gameId} />
+    ));
+  };
 
+  render() {
     return (
       <>
         <NewGameInputContainer />
-        {gameSummaries}
+        {this.renderGameSummaries()}
       </>
     );
   }

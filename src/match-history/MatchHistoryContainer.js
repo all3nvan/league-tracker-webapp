@@ -3,7 +3,8 @@ import { connect } from "react-redux";
 import MatchHistory from "match-history/MatchHistory";
 
 const mapStateToProps = state => ({
-  games: state.games
+  gameIds: state.games.allIds,
+  gamesById: state.games.byIds
 });
 
 export default connect(mapStateToProps)(MatchHistory);

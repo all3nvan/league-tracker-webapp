@@ -7,7 +7,7 @@ import teamColor from "constants/teamColor";
 
 class GameSummary extends Component {
   getParticipantsForTeam = teamColor => {
-    return this.props.game.gameParticipants.filter(
+    return this.props.gameParticipants.filter(
       participant => participant.team === teamColor
     );
   };
@@ -22,6 +22,13 @@ class GameSummary extends Component {
   };
 
   render() {
+    if (
+      !this.props.gameParticipants ||
+      this.props.gameParticipants.length === 0
+    ) {
+      return null;
+    }
+
     const blueTeamParticipants = this.getParticipantsForTeam(teamColor.BLUE);
     const blueTeamParticipantElements = this.mapToParticipantElements(
       blueTeamParticipants

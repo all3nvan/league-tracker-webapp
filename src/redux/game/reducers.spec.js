@@ -8,33 +8,14 @@ import {
 
 const game1 = {
   gameId: 2513935315,
-  gameParticipants: [
-    {
-      summonerId: null,
-      championId: 25,
-      id: "f80848bf-f843-4639-af66-b284058329f9",
-      team: "BLUE",
-      kills: 0,
-      deaths: 6,
-      assists: 7,
-      win: false
-    }
+  gameParticipantIds: [
+    "bed4ee0c-1318-489e-aca0-21e47220ed4b",
+    "c066470c-a556-41ed-9d5d-3803ef78f953"
   ]
 };
 const game2 = {
   gameId: 2513935040,
-  gameParticipants: [
-    {
-      summonerId: null,
-      championId: 266,
-      id: "ad4a55a8-e39e-4265-8ece-565150b455d0",
-      team: "BLUE",
-      kills: 4,
-      deaths: 6,
-      assists: 4,
-      win: true
-    }
-  ]
+  gameParticipantIds: ["ad4a55a8-e39e-4265-8ece-565150b455d0"]
 };
 
 test("RECEIVE_GAMES sets isFetching to false and puts games in store", () => {
