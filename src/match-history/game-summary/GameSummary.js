@@ -29,6 +29,8 @@ class GameSummary extends Component {
       return null;
     }
 
+    const gameDate = new Date(this.props.game.createTime);
+
     const blueTeamParticipants = this.getParticipantsForTeam(teamColor.BLUE);
     const blueTeamParticipantElements = this.mapToParticipantElements(
       blueTeamParticipants
@@ -57,8 +59,28 @@ class GameSummary extends Component {
 
     return (
       <div className="game-summary">
-        <div className={blueTeamClassNames}>{blueTeamParticipantElements}</div>
-        <div className={redTeamClassNames}>{redTeamParticipantElements}</div>
+        <div>
+          <span className="game-summary__time">
+            {gameDate.toLocaleString()}
+          </span>
+          <a
+            className="game-summary__external-link"
+            href={`https://matchhistory.na.leagueoflegends.com/en/#match-details/NA1/${
+              this.props.game.gameId
+            }`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Full game details
+            <i className="fas fa-external-link-alt" />
+          </a>
+        </div>
+        <div className="game-summary__participants">
+          <div className={blueTeamClassNames}>
+            {blueTeamParticipantElements}
+          </div>
+          <div className={redTeamClassNames}>{redTeamParticipantElements}</div>
+        </div>
       </div>
     );
   }

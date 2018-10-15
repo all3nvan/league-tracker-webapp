@@ -3,6 +3,17 @@ $lose-color: #e2b6b3;
 
 .game-summary {
   margin: 0.5em 0;
+}
+
+.game-summary__time {
+  font-weight: bold;
+}
+
+.game-summary__external-link {
+  float: right;
+}
+
+.game-summary__participants {
   display: flex;
 }
 
