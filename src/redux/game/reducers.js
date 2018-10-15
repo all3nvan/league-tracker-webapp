@@ -1,3 +1,5 @@
+import produce from "immer";
+
 import {
   RECEIVE_GAME,
   RECEIVE_GAMES,
@@ -12,38 +14,37 @@ const initialState = {
 };
 
 export default (state = initialState, action) => {
-  switch (action.type) {
-    case RECEIVE_GAMES:
-      const allIds = Object.keys(action.gamesById).map(gameIdString =>
-        parseInt(gameIdString)
-      );
-      // TODO: Should this logic live somewhere else? At least test it...
-      allIds.sort((id1, id2) => {
-        return (
-          new Date(action.gamesById[id2].createTime) -
-          new Date(action.gamesById[id1].createTime)
+  return produce(state, draft => {
+    switch (action.type) {
+      case RECEIVE_GAMES:
+        const allIds = Object.keys(action.gamesById).map(gameIdString =>
+          parseInt(gameIdString)
         );
-      });
-      return Object.assign({}, state, {
-        isFetching: false,
-        allIds,
-        byIds: action.gamesById
-      });
+        // TODO: Should this logic live somewhere else? At least test it...
+        allIds.sort((id1, id2) => {
+          return (
+            new Date(action.gamesById[id2].createTime) -
+            new Date(action.gamesById[id1].createTime)
+          );
+        });
 
-    case RECEIVE_GAME:
-      // TODO: deep clone state instead
-      const newState = Object.assign({}, state);
-      newState.isFetching = false;
-      newState.allIds.push(action.game.gameId);
-      newState.byIds[action.game.gameId] = action.game;
-      return newState;
+        draft.isFetching = false;
+        draft.allIds = allIds;
+        draft.byIds = action.gamesById;
+        break;
 
-    case START_FETCH_GAMES:
-      return Object.assign({}, state, {
-        isFetching: true
-      });
+      case RECEIVE_GAME:
+        draft.isFetching = false;
+        draft.allIds.push(action.game.gameId);
+        draft.byIds[action.game.gameId] = action.game;
+        break;
 
-    default:
-      return state;
-  }
+      case START_FETCH_GAMES:
+        draft.isFetching = true;
+        break;
+
+      default:
+        break;
+    }
+  });
 };

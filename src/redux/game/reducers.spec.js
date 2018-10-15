@@ -1,4 +1,4 @@
-import reducers from "redux/game/reducers";
+import reducers from "./reducers";
 
 import {
   RECEIVE_GAME,
