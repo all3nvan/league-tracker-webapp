@@ -5,7 +5,7 @@ import {
   START_FETCH_GAME_PARTICIPANTS
 } from "redux/game-participant/actionTypes";
 
-const participant = {
+const participant1 = {
   gameId: 2513935315,
   summonerId: null,
   championId: 25,
@@ -13,6 +13,17 @@ const participant = {
   team: "BLUE",
   kills: 0,
   deaths: 6,
+  assists: 7,
+  win: false
+};
+const participant2 = {
+  gameId: 2513935315,
+  summonerId: null,
+  championId: 202,
+  id: "5cb13d84-fa9a-4df5-b62f-90aeccfdd156",
+  team: "BLUE",
+  kills: 1,
+  deaths: 3,
   assists: 7,
   win: false
 };
@@ -25,14 +36,32 @@ test("RECEIVE_GAME_PARTICIPANTS sets isFetching to false and puts participants i
   const nextState = reducers(prevState, {
     type: RECEIVE_GAME_PARTICIPANTS,
     participantsById: {
-      "5f623ee0-b7c6-438f-9689-459e15c049be": participant
+      "5f623ee0-b7c6-438f-9689-459e15c049be": participant1
     }
   });
   expect(nextState).toEqual({
     isFetching: false,
     byIds: {
-      "5f623ee0-b7c6-438f-9689-459e15c049be": participant
+      "5f623ee0-b7c6-438f-9689-459e15c049be": participant1
     }
+  });
+});
+
+test("RECEIVE_GAME_PARTICIPANTS merges new participants with existing participants", () => {
+  const prevState = {
+    byIds: {
+      "5f623ee0-b7c6-438f-9689-459e15c049be": participant1
+    }
+  };
+  const nextState = reducers(prevState, {
+    type: RECEIVE_GAME_PARTICIPANTS,
+    participantsById: {
+      "5cb13d84-fa9a-4df5-b62f-90aeccfdd156": participant2
+    }
+  });
+  expect(nextState.byIds).toEqual({
+    "5f623ee0-b7c6-438f-9689-459e15c049be": participant1,
+    "5cb13d84-fa9a-4df5-b62f-90aeccfdd156": participant2
   });
 });
 

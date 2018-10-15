@@ -5,6 +5,7 @@ import {
   RECEIVE_GAMES,
   START_FETCH_GAMES
 } from "redux/game/actionTypes";
+import { receiveGameParticipants } from "redux/game-participant/actions";
 
 export const createGame = gameId => {
   return dispatch => {
@@ -14,7 +15,15 @@ export const createGame = gameId => {
       .post("http://localhost:4000/games", { gameId: parseInt(gameId) })
       .then(response => {
         dispatch(receiveGame(response.data.game));
-        // TODO: need to fetch new participants?
+        // TODO: Really should write tests for this
+        const gameParticipantsById = response.data.gameParticipants.reduce(
+          (obj, participant) => {
+            obj[participant.id] = participant;
+            return obj;
+          },
+          {}
+        );
+        dispatch(receiveGameParticipants(gameParticipantsById));
       });
     // TODO: catch error
   };

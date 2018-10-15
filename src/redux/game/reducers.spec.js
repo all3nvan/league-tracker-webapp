@@ -39,7 +39,7 @@ test("RECEIVE_GAMES sets isFetching to false and puts games in store", () => {
   });
 });
 
-test("RECEIVE_GAME sets isFetching to false and adds new game to store", () => {
+test("RECEIVE_GAME sets isFetching to false, adds new game to store, and adds new gameId to beginning of list", () => {
   const prevState = {
     isFetching: true,
     allIds: [2513935315],
@@ -53,7 +53,7 @@ test("RECEIVE_GAME sets isFetching to false and adds new game to store", () => {
   });
   expect(nextState).toEqual({
     isFetching: false,
-    allIds: [2513935315, 2513935040],
+    allIds: [2513935040, 2513935315],
     byIds: {
       "2513935315": game1,
       "2513935040": game2

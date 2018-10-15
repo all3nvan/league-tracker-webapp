@@ -14,8 +14,13 @@ export default (state = initialState, action) => {
   return produce(state, draft => {
     switch (action.type) {
       case RECEIVE_GAME_PARTICIPANTS:
+        const newParticipants = action.participantsById;
+
         draft.isFetching = false;
-        draft.byIds = action.participantsById;
+        draft.byIds = {
+          ...draft.byIds,
+          ...newParticipants
+        };
         break;
 
       case START_FETCH_GAME_PARTICIPANTS:

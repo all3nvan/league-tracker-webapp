@@ -35,7 +35,7 @@ export default (state = initialState, action) => {
 
       case RECEIVE_GAME:
         draft.isFetching = false;
-        draft.allIds.push(action.game.gameId);
+        draft.allIds.unshift(action.game.gameId);
         draft.byIds[action.game.gameId] = action.game;
         break;
 
