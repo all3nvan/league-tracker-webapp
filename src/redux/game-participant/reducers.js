@@ -1,3 +1,5 @@
+import produce from "immer";
+
 import {
   RECEIVE_GAME_PARTICIPANTS,
   START_FETCH_GAME_PARTICIPANTS
@@ -9,19 +11,19 @@ const initialState = {
 };
 
 export default (state = initialState, action) => {
-  switch (action.type) {
-    case RECEIVE_GAME_PARTICIPANTS:
-      return Object.assign({}, state, {
-        isFetching: false,
-        byIds: action.participantsById
-      });
+  return produce(state, draft => {
+    switch (action.type) {
+      case RECEIVE_GAME_PARTICIPANTS:
+        draft.isFetching = false;
+        draft.byIds = action.participantsById;
+        break;
 
-    case START_FETCH_GAME_PARTICIPANTS:
-      return Object.assign({}, state, {
-        isFetching: true
-      });
+      case START_FETCH_GAME_PARTICIPANTS:
+        draft.isFetching = true;
+        break;
 
-    default:
-      return state;
-  }
+      default:
+        break;
+    }
+  });
 };
