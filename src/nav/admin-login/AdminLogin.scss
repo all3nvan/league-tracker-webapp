@@ -1,0 +1,14 @@
+.admin-login__modal-card {
+  border-radius: 6px;
+  width: 400px;
+}
+
+.admin-login__login-button-field {
+  // The modal has 20px padding so this makes the spacing above and below the
+  // the login button symmetrical.
+  margin-top: 20px;
+}
+
+.admin-login__login-button {
+  width: 100%;
+}

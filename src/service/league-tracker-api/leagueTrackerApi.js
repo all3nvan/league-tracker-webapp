@@ -12,6 +12,14 @@ const appInitApis = {
   }
 };
 
+const adminTokenApis = {
+  createAdminToken: (username, password) => {
+    return api.post("/admin_token", {
+      auth: { username, password }
+    });
+  }
+};
+
 const gameApis = {
   createGame: gameId => {
     return api.post("/games", { gameId: parseInt(gameId) });
@@ -20,5 +28,6 @@ const gameApis = {
 
 export default {
   ...appInitApis,
+  ...adminTokenApis,
   ...gameApis
 };

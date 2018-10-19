@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 
+import AdminLoginContainer from "nav/admin-login/AdminLoginContainer";
+
 class Navbar extends Component {
   render() {
     return (
@@ -10,7 +12,10 @@ class Navbar extends Component {
 
         <div className="navbar-menu">
           <div className="navbar-end">
-            <div className="navbar-item">Admin</div>
+            <AdminLoginContainer>
+              {/* TODO: hover effect?*/}
+              <div className="navbar-item">Admin login</div>
+            </AdminLoginContainer>
           </div>
         </div>
       </nav>
