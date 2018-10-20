@@ -14,16 +14,6 @@ body {
   }
 }
 
-.button {
-  color: white;
-  font-weight: bold;
-
-  &:hover {
-    color: white;
-    cursor: pointer;
-  }
-}
-
 .button.button-primary {
   background-color: $primary-color;
   border-color: $primary-color;

@@ -2,3 +2,14 @@
 .svg-inline--fa {
   margin: 0 5px;
 }
+
+// Bulma button
+.button {
+  color: white;
+  font-weight: bold;
+
+  &:hover {
+    color: white;
+    cursor: pointer;
+  }
+}
