@@ -1,10 +1,17 @@
 $primary-color: #00d1b2;
+$success-color: #00a4cf;
+$light-gray: lighten(#98b0aa, 15%);
+
 $font-color: #555e5e;
 
 $content-max-width: 65em;
 
 body {
   color: $font-color;
+}
+
+a {
+  color: $success-color;
 }
 
 .clickable {
