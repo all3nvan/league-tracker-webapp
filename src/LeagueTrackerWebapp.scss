@@ -1,3 +1,6 @@
+@import "styles/theme.scss";
+
 .league-tracker-webapp__main-content {
-  margin: 0 0.75em;
+  max-width: $content-max-width;
+  margin: 1em auto;
 }

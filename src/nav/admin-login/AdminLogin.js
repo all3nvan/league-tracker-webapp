@@ -49,13 +49,17 @@ class AdminLogin extends Component {
   };
 
   render() {
+    const clickableChildren = React.cloneElement(this.props.children, {
+      onClick: this.openModal
+    });
+
     const adminLoginClassNames = classNames("modal", {
       "is-active": this.state.isOpen
     });
 
     return (
       <>
-        <div onClick={this.openModal}>{this.props.children}</div>
+        {clickableChildren}
 
         <div className={adminLoginClassNames}>
           <div className="modal-background" onClick={this.closeModal} />
@@ -77,9 +81,9 @@ class AdminLogin extends Component {
                   </div>
                 </div>
 
-                <div className="field admin-login__login-button-field">
+                <div className="field">
                   <button
-                    className="button is-link admin-login__login-button"
+                    className="button button-primary admin-login__login-button"
                     type="submit"
                   >
                     Login

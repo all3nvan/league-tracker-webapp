@@ -1,11 +1,35 @@
+$primary-color: #00d1b2;
+$font-color: #555e5e;
+
+$content-max-width: 65em;
+
 body {
-  margin: 0 auto;
-  max-width: 65em;
-  color: #555e5e;
+  color: $font-color;
 }
 
 .clickable {
   &:hover {
     cursor: pointer;
+    color: darken($font-color, 40%);
+  }
+}
+
+.button {
+  color: white;
+  font-weight: bold;
+
+  &:hover {
+    color: white;
+    cursor: pointer;
+  }
+}
+
+.button.button-primary {
+  background-color: $primary-color;
+  border-color: $primary-color;
+
+  &:hover {
+    background-color: darken($primary-color, 10%);
+    border-color: darken($primary-color, 10%);
   }
 }
