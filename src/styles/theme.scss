@@ -30,3 +30,11 @@ a {
     border-color: darken($primary-color, 10%);
   }
 }
+
+.input-invalid {
+  border-color: red;
+
+  &:focus {
+    border-color: red;
+  }
+}

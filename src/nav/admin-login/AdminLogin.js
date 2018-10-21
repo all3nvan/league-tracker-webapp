@@ -2,12 +2,13 @@ import React, { Component } from "react";
 import classNames from "classnames";
 
 import "./AdminLogin.scss";
+import { MIN_LOADING_TIME } from "constants/appConstants";
 
-const onlyAdminUsername = "admin";
+const theOnlyAdminAccount = "admin";
 
 const initialState = {
   isOpen: false,
-  username: onlyAdminUsername,
+  username: theOnlyAdminAccount,
   password: ""
 };
 
@@ -43,23 +44,62 @@ class AdminLogin extends Component {
   submit = event => {
     event.preventDefault();
 
-    this.props.login(this.state.username, this.state.password);
+    this.props
+      .login(this.state.username, this.state.password)
+      .then(() => {
+        return new Promise(resolve => {
+          setTimeout(resolve, MIN_LOADING_TIME);
+        });
+      })
+      .then(() => {
+        this.setState(initialState);
+      });
+  };
 
-    this.setState(initialState);
+  renderModalOpenerChild = () => {
+    if (this.props.isLoggedIn) {
+      return null;
+    }
+    return React.cloneElement(this.props.children, {
+      onClick: this.openModal
+    });
+  };
+
+  renderLoginButton = () => {
+    const loginButtonClassNames = classNames(
+      "button",
+      "button-primary",
+      "admin-login__login-button",
+      {
+        "is-loading": this.props.loginInProgress
+      }
+    );
+
+    if (this.props.isLoggedIn) {
+      return (
+        <button className="button is-success admin-login__login-button">
+          <i className="fas fa-check" />
+        </button>
+      );
+    }
+    return (
+      <button className={loginButtonClassNames} type="submit">
+        Login
+      </button>
+    );
   };
 
   render() {
-    const clickableChildren = React.cloneElement(this.props.children, {
-      onClick: this.openModal
-    });
-
     const adminLoginClassNames = classNames("modal", {
       "is-active": this.state.isOpen
+    });
+    const passwordInputClassNames = classNames("input", {
+      "input-invalid": this.props.loginFailed
     });
 
     return (
       <>
-        {clickableChildren}
+        {this.renderModalOpenerChild()}
 
         <div className={adminLoginClassNames}>
           <div className="modal-background" onClick={this.closeModal} />
@@ -70,7 +110,7 @@ class AdminLogin extends Component {
                   <label className="label">Enter admin password</label>
                   <div className="control has-icons-left">
                     <input
-                      className="input"
+                      className={passwordInputClassNames}
                       type="password"
                       value={this.state.password}
                       onChange={this.updatePassword}
@@ -81,14 +121,7 @@ class AdminLogin extends Component {
                   </div>
                 </div>
 
-                <div className="field">
-                  <button
-                    className="button button-primary admin-login__login-button"
-                    type="submit"
-                  >
-                    Login
-                  </button>
-                </div>
+                <div className="field">{this.renderLoginButton()}</div>
               </form>
             </section>
           </div>
