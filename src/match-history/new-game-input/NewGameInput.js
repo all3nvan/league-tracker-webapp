@@ -22,8 +22,12 @@ class NewGameInput extends Component {
     this.props.onSubmit(this.state.newGameId);
   };
 
-  // TODO: validate that game id is a number
   render() {
+    if (!this.props.isLoggedIn) {
+      return null;
+    }
+
+    // TODO: validate that game id is a number
     return (
       <div className="new-game-input">
         <input
