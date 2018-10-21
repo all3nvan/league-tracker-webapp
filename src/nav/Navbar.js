@@ -14,9 +14,7 @@ class Navbar extends Component {
             </div>
 
             <div className="navbar-end">
-              <AdminLoginContainer>
-                <div className="navbar-item">Admin login</div>
-              </AdminLoginContainer>
+              <AdminLoginContainer />
             </div>
           </div>
         </nav>

@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 
 import AdminLogin from "./AdminLogin";
-import { login } from "redux/admin/actions";
+import { login, logout } from "redux/admin/actions";
 
 const mapStateToProps = state => ({
   loginInProgress: state.admin.loginInProgress,
@@ -11,6 +11,9 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   login: (username, password) => {
     return dispatch(login(username, password));
+  },
+  logout: () => {
+    dispatch(logout());
   }
 });
 

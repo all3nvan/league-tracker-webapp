@@ -2,6 +2,7 @@ import produce from "immer";
 
 import {
   FAILED_LOGIN,
+  LOGOUT,
   RECEIVE_TOKEN,
   START_LOGIN
 } from "redux/admin/actionTypes";
@@ -31,6 +32,10 @@ export default (state = initialState, action) => {
       case FAILED_LOGIN:
         draft.loginInProgress = false;
         draft.loginFailed = true;
+        break;
+
+      case LOGOUT:
+        Object.assign(draft, initialState);
         break;
 
       default:

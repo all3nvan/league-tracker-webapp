@@ -1,6 +1,7 @@
 import reducers from "./reducers";
 import {
   FAILED_LOGIN,
+  LOGOUT,
   RECEIVE_TOKEN,
   START_LOGIN
 } from "redux/admin/actionTypes";
@@ -51,5 +52,23 @@ test("FAILED_LOGIN sets loginInProgress to false and failedLogin to true", () =>
   expect(nextState).toEqual({
     loginInProgress: false,
     loginFailed: true
+  });
+});
+
+test("LOGOUT resets state to initial state", () => {
+  const prevState = {
+    loginInProgress: false,
+    isLoggedIn: true,
+    jsonWebToken: jsonWebToken,
+    loginFailed: false
+  };
+  const nextState = reducers(prevState, {
+    type: LOGOUT
+  });
+  expect(nextState).toEqual({
+    loginInProgress: false,
+    isLoggedIn: false,
+    jsonWebToken: "",
+    loginFailed: false
   });
 });

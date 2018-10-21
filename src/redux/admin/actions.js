@@ -1,5 +1,6 @@
 import {
   FAILED_LOGIN,
+  LOGOUT,
   RECEIVE_TOKEN,
   START_LOGIN
 } from "redux/admin/actionTypes";
@@ -27,6 +28,10 @@ export const login = (username, password) => {
       });
   };
 };
+
+export const logout = () => ({
+  type: LOGOUT
+});
 
 export const startLogin = () => ({
   type: START_LOGIN

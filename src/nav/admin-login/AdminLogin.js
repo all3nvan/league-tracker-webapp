@@ -56,13 +56,19 @@ class AdminLogin extends Component {
       });
   };
 
-  renderModalOpenerChild = () => {
+  renderNavbarItem = () => {
     if (this.props.isLoggedIn) {
-      return null;
+      return (
+        <div className="navbar-item" onClick={this.props.logout}>
+          Logout
+        </div>
+      );
     }
-    return React.cloneElement(this.props.children, {
-      onClick: this.openModal
-    });
+    return (
+      <div className="navbar-item" onClick={this.openModal}>
+        Admin login
+      </div>
+    );
   };
 
   renderLoginButton = () => {
@@ -77,8 +83,12 @@ class AdminLogin extends Component {
 
     if (this.props.isLoggedIn) {
       return (
+        // Because the Font Awesome icon is removed when Logout is clicked, it needs to be wrapped
+        // https://stackoverflow.com/questions/48358529/failed-to-execute-removechild-on-node-with-fontawesome-in-react
         <button className="button is-success admin-login__login-button">
-          <i className="fas fa-check" />
+          <span>
+            <i className="fas fa-check" />
+          </span>
         </button>
       );
     }
@@ -99,7 +109,7 @@ class AdminLogin extends Component {
 
     return (
       <>
-        {this.renderModalOpenerChild()}
+        {this.renderNavbarItem()}
 
         <div className={adminLoginClassNames}>
           <div className="modal-background" onClick={this.closeModal} />
