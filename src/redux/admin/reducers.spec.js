@@ -26,7 +26,6 @@ test("RECEIVE_TOKEN sets state to logged in", () => {
   const prevState = {
     loginInProgress: true,
     isLoggedIn: false,
-    jsonWebToken: "",
     loginFailed: true
   };
   const nextState = reducers(prevState, {
@@ -36,9 +35,10 @@ test("RECEIVE_TOKEN sets state to logged in", () => {
   expect(nextState).toEqual({
     loginInProgress: false,
     isLoggedIn: true,
-    jsonWebToken: jsonWebToken,
     loginFailed: false
   });
+  // TODO: Figure out how to get this to work
+  expect(localStorage.setItem).toBeCalledWith("jsonWebToken", jsonWebToken);
 });
 
 test("FAILED_LOGIN sets loginInProgress to false and failedLogin to true", () => {
@@ -59,7 +59,6 @@ test("LOGOUT resets state to initial state", () => {
   const prevState = {
     loginInProgress: false,
     isLoggedIn: true,
-    jsonWebToken: jsonWebToken,
     loginFailed: false
   };
   const nextState = reducers(prevState, {
@@ -68,7 +67,6 @@ test("LOGOUT resets state to initial state", () => {
   expect(nextState).toEqual({
     loginInProgress: false,
     isLoggedIn: false,
-    jsonWebToken: "",
     loginFailed: false
   });
 });

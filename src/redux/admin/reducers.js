@@ -6,11 +6,11 @@ import {
   RECEIVE_TOKEN,
   START_LOGIN
 } from "redux/admin/actionTypes";
+import { JSON_WEB_TOKEN } from "constants/localStorageKeys";
 
 const initialState = {
   loginInProgress: false,
   isLoggedIn: false,
-  jsonWebToken: "",
   loginFailed: false
 };
 
@@ -23,9 +23,9 @@ export default (state = initialState, action) => {
         break;
 
       case RECEIVE_TOKEN:
+        localStorage.setItem(JSON_WEB_TOKEN, action.jsonWebToken);
         draft.loginInProgress = false;
         draft.isLoggedIn = true;
-        draft.jsonWebToken = action.jsonWebToken;
         draft.loginFailed = false;
         break;
 
@@ -35,6 +35,7 @@ export default (state = initialState, action) => {
         break;
 
       case LOGOUT:
+        localStorage.removeItem(JSON_WEB_TOKEN);
         Object.assign(draft, initialState);
         break;
 
