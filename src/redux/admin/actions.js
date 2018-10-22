@@ -1,5 +1,6 @@
 import {
   FAILED_LOGIN,
+  INIT_LOGIN_STATE,
   LOGOUT,
   RECEIVE_TOKEN,
   START_LOGIN
@@ -31,6 +32,10 @@ export const login = (username, password) => {
 
 export const logout = () => ({
   type: LOGOUT
+});
+
+export const initLoginState = () => ({
+  type: INIT_LOGIN_STATE
 });
 
 export const startLogin = () => ({

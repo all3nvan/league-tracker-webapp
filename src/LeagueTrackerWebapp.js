@@ -6,7 +6,8 @@ import Navbar from "nav/Navbar";
 
 class LeagueTrackerWebapp extends Component {
   componentDidMount = () => {
-    this.props.initApp();
+    this.props.initAppData();
+    this.props.initLoginState();
   };
 
   render() {
