@@ -1,11 +1,10 @@
 @import "styles/theme.scss";
 
-.navbar__wrapper {
+.navbar {
   background-color: $primary-color;
 }
 
-.navbar {
-  background-color: $primary-color;
+.navbar-menu {
   max-width: $content-max-width;
   margin: 0 auto;
 }
