@@ -1,7 +1,7 @@
 import {
   FAILED_LOGIN,
-  INIT_LOGIN_STATE,
   LOGOUT,
+  RECEIVE_LOGIN_STATE,
   RECEIVE_TOKEN,
   START_LOGIN
 } from "redux/admin/actionTypes";
@@ -34,8 +34,17 @@ export const logout = () => ({
   type: LOGOUT
 });
 
-export const initLoginState = () => ({
-  type: INIT_LOGIN_STATE
+export const fetchLoginState = () => {
+  return dispatch => {
+    leagueTrackerApi
+      .getLoginState()
+      .then(isLoggedIn => dispatch(receiveLoginState(isLoggedIn)));
+  };
+};
+
+export const receiveLoginState = isLoggedIn => ({
+  type: RECEIVE_LOGIN_STATE,
+  isLoggedIn
 });
 
 export const startLogin = () => ({

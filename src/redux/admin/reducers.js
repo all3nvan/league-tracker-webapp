@@ -2,8 +2,8 @@ import produce from "immer";
 
 import {
   FAILED_LOGIN,
-  INIT_LOGIN_STATE,
   LOGOUT,
+  RECEIVE_LOGIN_STATE,
   RECEIVE_TOKEN,
   START_LOGIN
 } from "redux/admin/actionTypes";
@@ -18,11 +18,8 @@ const initialState = {
 export default (state = initialState, action) => {
   return produce(state, draft => {
     switch (action.type) {
-      case INIT_LOGIN_STATE:
-        // TODO: We should also check if the token is valid
-        if (localStorage.getItem(JSON_WEB_TOKEN)) {
-          draft.isLoggedIn = true;
-        }
+      case RECEIVE_LOGIN_STATE:
+        draft.isLoggedIn = action.isLoggedIn;
         break;
 
       case START_LOGIN:

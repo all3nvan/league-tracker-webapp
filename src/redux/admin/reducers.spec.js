@@ -2,18 +2,37 @@ import reducers from "./reducers";
 import {
   FAILED_LOGIN,
   LOGOUT,
+  RECEIVE_LOGIN_STATE,
   RECEIVE_TOKEN,
   START_LOGIN
 } from "redux/admin/actionTypes";
 
 const jsonWebToken = "fake token";
 
-xit("INIT_LOGIN_STATE sets isLoggedIn to true when JWT is in local storage", () => {
-  // TODO: Write test after figuring out how to mock localStorage
+test("RECEIVE_LOGIN_STATE sets isLoggedIn to true when receiving true", () => {
+  const prevState = {
+    isLoggedIn: false
+  };
+  const nextState = reducers(prevState, {
+    type: RECEIVE_LOGIN_STATE,
+    isLoggedIn: true
+  });
+  expect(nextState).toEqual({
+    isLoggedIn: true
+  });
 });
 
-xit("INIT_LOGIN_STATE sets isLoggedIn to false when JWT is not in local storage", () => {
-  // TODO: Write test after figuring out how to mock localStorage
+test("RECEIVE_LOGIN_STATE sets isLoggedIn to false when receiving false", () => {
+  const prevState = {
+    isLoggedIn: true
+  };
+  const nextState = reducers(prevState, {
+    type: RECEIVE_LOGIN_STATE,
+    isLoggedIn: false
+  });
+  expect(nextState).toEqual({
+    isLoggedIn: false
+  });
 });
 
 test("START_LOGIN sets loginInProgress to true and loginFailed to false", () => {

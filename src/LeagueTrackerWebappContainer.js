@@ -2,7 +2,7 @@ import { connect } from "react-redux";
 
 import LeagueTrackerWebapp from "LeagueTrackerWebapp";
 import { fetchAppInitData } from "redux/app-init/actions";
-import { initLoginState } from "redux/admin/actions";
+import { fetchLoginState } from "redux/admin/actions";
 
 const mapStateToProps = () => ({});
 const mapDispatchToProps = dispatch => ({
@@ -10,7 +10,7 @@ const mapDispatchToProps = dispatch => ({
     dispatch(fetchAppInitData());
   },
   initLoginState: () => {
-    dispatch(initLoginState());
+    dispatch(fetchLoginState());
   }
 });
 

@@ -13,11 +13,20 @@ const appInitApis = {
   }
 };
 
-const adminTokenApis = {
+const adminApis = {
   createAdminToken: (username, password) => {
     return api.post("/admin_token", {
       auth: { username, password }
     });
+  },
+  getLoginState: () => {
+    const headers = {
+      Authorization: `Bearer ${localStorage.getItem(JSON_WEB_TOKEN)}`
+    };
+    return api
+      .get("/auth_checks", { headers })
+      .then(() => true)
+      .catch(() => false);
   }
 };
 
@@ -33,6 +42,6 @@ const gameApis = {
 
 export default {
   ...appInitApis,
-  ...adminTokenApis,
+  ...adminApis,
   ...gameApis
 };
