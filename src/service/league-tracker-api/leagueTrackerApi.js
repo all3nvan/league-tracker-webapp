@@ -1,6 +1,7 @@
 import axios from "axios";
 
 import config from "./config";
+import { JSON_WEB_TOKEN } from "constants/localStorageKeys";
 
 const api = axios.create({
   baseURL: config.getBaseUrl()
@@ -22,7 +23,11 @@ const adminTokenApis = {
 
 const gameApis = {
   createGame: gameId => {
-    return api.post("/games", { gameId: parseInt(gameId) });
+    const data = { gameId: parseInt(gameId) };
+    const headers = {
+      Authorization: `Bearer ${localStorage.getItem(JSON_WEB_TOKEN)}`
+    };
+    return api.post("/games", data, { headers });
   }
 };
 
