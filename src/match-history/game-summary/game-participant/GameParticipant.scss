@@ -17,9 +17,16 @@
 }
 
 .game-participant__champion {
-  width: 8%;
+  display: flex;
+  height: 40px;
+  width: 40px;
 }
 
 .game-participant__kda {
-  width: 15%;
+  width: 20%;
+  margin: 0 8px;
+}
+
+.game-participant__summoner {
+  width: 50%;
 }

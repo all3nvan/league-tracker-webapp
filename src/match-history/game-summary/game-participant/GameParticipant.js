@@ -19,7 +19,7 @@ class GameParticipant extends Component {
 
     return (
       <input
-        className="input is-small"
+        className="input"
         type="text"
         placeholder="Enter player name"
         value={this.state.summonerName}
@@ -55,7 +55,7 @@ class GameParticipant extends Component {
           <div className="game-participant__stat game-participant__kda">
             {participant.kills}/{participant.deaths}/{participant.assists}
           </div>
-          <div className="game-participant__stat">
+          <div className="game-participant__stat game-participant__summoner">
             {this.getSummonerElement()}
           </div>
         </div>

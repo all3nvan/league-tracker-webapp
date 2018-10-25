@@ -21,25 +21,24 @@ $lose-color: $light-gray;
 
 .game-summary__team {
   width: 50%;
+  font-size: 1.2em;
 }
 
 .game-summary__team--blue {
-  margin-right: 1px;
+  border-bottom-left-radius: 6px;
+  border-top-left-radius: 6px;
 }
 
 .game-summary__team--red {
-  margin-left: 1px;
+  border-bottom-right-radius: 6px;
+  border-top-right-radius: 6px;
 }
 
 .game-summary__team--win {
   color: white;
   background-color: $win-color;
-  border: 4px solid $win-color;
-  border-radius: 6px;
 }
 
 .game-summary__team--lose {
   background-color: $lose-color;
-  border: 4px solid $lose-color;
-  border-radius: 6px;
 }
