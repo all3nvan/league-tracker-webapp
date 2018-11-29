@@ -17,6 +17,10 @@ class GameParticipant extends Component {
       return this.props.participant.summonerId;
     }
 
+    if (!this.props.isLoggedIn) {
+      return null;
+    }
+
     return (
       <input
         className="input"
