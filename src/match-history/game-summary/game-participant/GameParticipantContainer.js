@@ -5,8 +5,8 @@ import { updateGameParticipant } from "redux/game-participant/actions";
 
 const mapStateToProps = () => ({});
 const mapDispatchToProps = dispatch => ({
-  summonerNameOnSubmit: summonerName => {
-    dispatch(updateGameParticipant(summonerName));
+  summonerNameOnSubmit: (participant, summonerName) => {
+    dispatch(updateGameParticipant(participant, summonerName));
   }
 });
 

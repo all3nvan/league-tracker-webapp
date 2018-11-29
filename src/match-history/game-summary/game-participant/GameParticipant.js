@@ -14,7 +14,7 @@ class GameParticipant extends Component {
 
   getSummonerElement = () => {
     if (this.props.participant.summonerId) {
-      // TODO: return editable name field
+      return this.props.participant.summonerId;
     }
 
     return (
@@ -35,7 +35,10 @@ class GameParticipant extends Component {
 
   summonerNameOnEnter = event => {
     if (event.key === "Enter") {
-      this.props.summonerNameOnSubmit(this.state.summonerName);
+      this.props.summonerNameOnSubmit(
+        this.props.participant,
+        this.state.summonerName
+      );
     }
   };
 
