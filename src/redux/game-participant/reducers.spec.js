@@ -1,6 +1,7 @@
 import reducers from "./reducers";
 
 import {
+  RECEIVE_GAME_PARTICIPANT,
   RECEIVE_GAME_PARTICIPANTS,
   START_FETCH_GAME_PARTICIPANTS
 } from "redux/game-participant/actionTypes";
@@ -62,6 +63,28 @@ test("RECEIVE_GAME_PARTICIPANTS merges new participants with existing participan
   expect(nextState.byIds).toEqual({
     "5f623ee0-b7c6-438f-9689-459e15c049be": participant1,
     "5cb13d84-fa9a-4df5-b62f-90aeccfdd156": participant2
+  });
+});
+
+test("RECEIVE_GAME_PARTICIPANT puts participant in store", () => {
+  const prevState = {
+    byIds: {
+      asdf: {
+        id: "asdf",
+        summonerId: null
+      }
+    }
+  };
+  const nextState = reducers(prevState, {
+    type: RECEIVE_GAME_PARTICIPANT,
+    participant: {
+      id: "asdf",
+      summonerId: 123
+    }
+  });
+  expect(nextState.byIds["asdf"]).toEqual({
+    id: "asdf",
+    summonerId: 123
   });
 });
 

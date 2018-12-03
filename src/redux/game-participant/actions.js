@@ -1,4 +1,5 @@
 import {
+  RECEIVE_GAME_PARTICIPANT,
   RECEIVE_GAME_PARTICIPANTS,
   START_FETCH_GAME_PARTICIPANTS
 } from "redux/game-participant/actionTypes";
@@ -13,12 +14,17 @@ export const receiveGameParticipants = participantsById => ({
   participantsById
 });
 
+export const receiveGameParticipant = participant => ({
+  type: RECEIVE_GAME_PARTICIPANT,
+  participant
+});
+
 export const updateGameParticipant = (participant, summonerName) => {
   return dispatch => {
     return leagueTrackerApi
       .updateGameParticipant(participant, summonerName)
       .then(response => {
-        console.log(response);
+        dispatch(receiveGameParticipant(response.data.gameParticipant));
       })
       .catch(error => {
         // TODO: Show a toast or something
