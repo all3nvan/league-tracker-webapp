@@ -13,11 +13,17 @@ class GameParticipant extends Component {
   }
 
   getSummonerElement = () => {
-    if (this.props.participant.summonerId) {
-      return this.props.participant.summonerId;
+    const { participant, summonersById, isLoggedIn } = this.props;
+
+    if (participant.summonerId) {
+      if (summonersById[participant.summonerId]) {
+        return summonersById[participant.summonerId].name;
+      } else {
+        return participant.summonerId;
+      }
     }
 
-    if (!this.props.isLoggedIn) {
+    if (!isLoggedIn) {
       return null;
     }
 

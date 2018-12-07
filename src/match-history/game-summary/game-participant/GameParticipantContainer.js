@@ -4,7 +4,8 @@ import GameParticipant from "match-history/game-summary/game-participant/GamePar
 import { updateGameParticipant } from "redux/game-participant/actions";
 
 const mapStateToProps = state => ({
-  isLoggedIn: state.admin.isLoggedIn
+  isLoggedIn: state.admin.isLoggedIn,
+  summonersById: state.summoners.byIds
 });
 const mapDispatchToProps = dispatch => ({
   summonerNameOnSubmit: (participant, summonerName) => {
