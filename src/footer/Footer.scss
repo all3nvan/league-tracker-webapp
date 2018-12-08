@@ -1,0 +1,10 @@
+@import "styles/theme.scss";
+
+.footer {
+  padding: 1em;
+
+  .content {
+    max-width: $content-max-width;
+    margin: 0 auto;
+  }
+}

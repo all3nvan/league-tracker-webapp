@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import "LeagueTrackerWebapp.scss";
 import MatchHistoryContainer from "match-history/MatchHistoryContainer";
 import Navbar from "nav/Navbar";
+import Footer from "footer/Footer";
 
 class LeagueTrackerWebapp extends Component {
   componentDidMount = () => {
@@ -17,6 +18,7 @@ class LeagueTrackerWebapp extends Component {
         <div className="league-tracker-webapp__main-content">
           <MatchHistoryContainer />
         </div>
+        <Footer />
       </>
     );
   }
