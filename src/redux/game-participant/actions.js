@@ -30,8 +30,7 @@ export const updateGameParticipant = (participant, summonerName) => {
       })
       .catch(error => {
         // TODO: Show a toast or something
-        console.log(error.response.status);
-        console.log(error.response.data.message);
+        console.log(error.response);
       });
   };
 };
