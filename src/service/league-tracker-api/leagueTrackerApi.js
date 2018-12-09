@@ -42,7 +42,12 @@ const gameApis = {
 
 const gameParticipantApis = {
   updateGameParticipant: (participant, summonerName) => {
-    const data = { gameParticipant: { summonerName } };
+    const data = {
+      gameParticipant: {
+        lockVersion: participant.lockVersion,
+        summonerName
+      }
+    };
     const headers = getAuthorizationHeader();
     return api.patch(`/game_participants/${participant.id}`, data, { headers });
   }
