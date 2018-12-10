@@ -4,11 +4,9 @@ import classNames from "classnames";
 import "./AdminLogin.scss";
 import { MIN_LOADING_TIME } from "constants/appConstants";
 
-const theOnlyAdminAccount = "admin";
-
 const initialState = {
   isOpen: false,
-  username: theOnlyAdminAccount,
+  username: "",
   password: ""
 };
 
@@ -29,6 +27,15 @@ class AdminLogin extends Component {
     this.setState(state => ({
       ...state,
       isOpen: false
+    }));
+  };
+
+  updateUsername = event => {
+    // Need to cache value due to event pooling: https://reactjs.org/docs/events.html#event-pooling
+    const cachedUsername = event.target.value;
+    this.setState(state => ({
+      ...state,
+      username: cachedUsername
     }));
   };
 
@@ -117,7 +124,20 @@ class AdminLogin extends Component {
             <section className="modal-card-body">
               <form onSubmit={this.submit}>
                 <div className="field">
-                  <label className="label">Enter admin password</label>
+                  <label className="label">Username</label>
+                  <div className="control has-icons-left">
+                    <input
+                      className="input"
+                      value={this.state.username}
+                      onChange={this.updateUsername}
+                    />
+                    <span className="icon is-small is-left">
+                      <i className="fas fa-user" />
+                    </span>
+                  </div>
+                </div>
+                <div className="field">
+                  <label className="label">Password</label>
                   <div className="control has-icons-left">
                     <input
                       className={passwordInputClassNames}
