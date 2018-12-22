@@ -9,7 +9,9 @@
   margin: 0 auto;
 }
 
-.navbar-item {
+.navbar-item,
+// Need to style anchor since React Router renders an anchor for a Link component
+a.navbar-item {
   color: white;
   font-weight: bold;
 
