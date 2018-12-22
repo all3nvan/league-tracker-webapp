@@ -22,6 +22,8 @@ class Rankings extends Component {
         <tr key={ranking.summonerId}>
           <td>{i + 1}</td>
           <td>{summonerName}</td>
+          <td>{ranking.wins}</td>
+          <td>{ranking.losses}</td>
           <td>{ranking.rating.toFixed(2)}</td>
         </tr>
       );
@@ -34,6 +36,8 @@ class Rankings extends Component {
             <tr>
               <th>Rank</th>
               <th>Player</th>
+              <th>Wins</th>
+              <th>Losses</th>
               <th>Rating</th>
             </tr>
           </thead>
