@@ -11,7 +11,6 @@ export const fetchRankings = () => {
     leagueTrackerApi
       .getRatings()
       .then(response => {
-        console.log(response);
         dispatch(receiveRankings(response.data.ratings));
       })
       .catch(error => {
