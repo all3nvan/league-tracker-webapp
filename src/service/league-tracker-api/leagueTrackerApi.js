@@ -53,9 +53,16 @@ const gameParticipantApis = {
   }
 };
 
+const ratingsApis = {
+  getRatings: () => {
+    return api.get("/ratings");
+  }
+};
+
 export default {
   ...appInitApis,
   ...adminApis,
   ...gameApis,
-  ...gameParticipantApis
+  ...gameParticipantApis,
+  ...ratingsApis
 };

@@ -1,9 +1,16 @@
 import { connect } from "react-redux";
 
 import Rankings from "rankings/Rankings";
+import { fetchRankings } from "redux/rankings/actions";
 
-const mapStateToProps = state => ({});
-const mapDispatchToProps = dispatch => ({});
+const mapStateToProps = state => ({
+  orderedRankings: state.rankings.orderedRankings
+});
+const mapDispatchToProps = dispatch => ({
+  fetchRankings: () => {
+    dispatch(fetchRankings());
+  }
+});
 
 export default connect(
   mapStateToProps,
