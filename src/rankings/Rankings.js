@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 
 import "./Rankings.scss";
+import SummonerLink from "components/SummonerLink";
 
 class Rankings extends Component {
   componentDidMount = () => {
@@ -21,7 +22,9 @@ class Rankings extends Component {
       return (
         <tr key={ranking.summonerId}>
           <td>{i + 1}</td>
-          <td>{summonerName}</td>
+          <td>
+            <SummonerLink summonerName={summonerName} />
+          </td>
           <td>{ranking.wins}</td>
           <td>{ranking.losses}</td>
           <td>{ranking.rating.toFixed(2)}</td>
