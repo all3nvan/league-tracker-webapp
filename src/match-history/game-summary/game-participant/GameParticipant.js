@@ -3,7 +3,7 @@ import classNames from "classnames";
 
 import "match-history/game-summary/game-participant/GameParticipant.scss";
 import teamColor from "constants/teamColor";
-import championIdToImageLinks from "constants/championIdToImageLinks";
+import ChampionAvatar from "components/ChampionAvatar";
 
 class GameParticipant extends Component {
   constructor(props) {
@@ -63,7 +63,7 @@ class GameParticipant extends Component {
       <div className="game-participant">
         <div className={detailsClassNames}>
           <div className="game-participant__stat game-participant__champion">
-            <img src={championIdToImageLinks[participant.championId]} alt="?" />
+            <ChampionAvatar championId={participant.championId} />
           </div>
           <div className="game-participant__stat game-participant__kda">
             {participant.kills}/{participant.deaths}/{participant.assists}

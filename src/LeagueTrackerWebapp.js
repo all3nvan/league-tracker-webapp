@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "LeagueTrackerWebapp.scss";
 import MatchHistoryContainer from "match-history/MatchHistoryContainer";
 import RankingsContainer from "rankings/RankingsContainer";
+import SummonerContainer from "summoner/SummonerContainer";
 import Navbar from "nav/Navbar";
 import Footer from "footer/Footer";
 
@@ -22,6 +23,10 @@ class LeagueTrackerWebapp extends Component {
             <Switch>
               <Route path="/" exact component={MatchHistoryContainer} />
               <Route path="/rankings" component={RankingsContainer} />
+              <Route
+                path="/summoners/:summonerName"
+                component={SummonerContainer}
+              />
             </Switch>
           </div>
           <Footer />

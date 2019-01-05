@@ -1,0 +1,21 @@
+.summoner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.summoner__table {
+  width: 55%;
+  font-size: 1.2em;
+  border-spacing: 0 5px;
+  border-collapse: separate;
+
+  td {
+    vertical-align: middle;
+  }
+}
+
+.summoner__table__champion {
+  width: 40px;
+  height: 40px;
+}
