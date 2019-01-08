@@ -1,0 +1,34 @@
+.teams-page {
+  font-size: 1.2em;
+}
+
+.teams-page__match-quality {
+  text-align: center;
+}
+
+.teams-page__arrow-nav {
+  font-size: 1.8em;
+}
+
+.teams-page__player-display {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin: 0.5em 0;
+}
+
+.teams-page__blue-team {
+  text-align: right;
+  width: 15%;
+  margin: 0 10px;
+}
+
+.teams-page__team-divider {
+  margin: 0 10px;
+}
+
+.teams-page__red-team {
+  width: 15%;
+  margin: 0 10px;
+}

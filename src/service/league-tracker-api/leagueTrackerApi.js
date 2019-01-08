@@ -53,6 +53,13 @@ const gameParticipantApis = {
   }
 };
 
+const teamCombinationApis = {
+  generateTeams: summonerIds => {
+    const data = { summonerIds };
+    return api.post("/team_combinations", data);
+  }
+};
+
 const ratingsApis = {
   getRatings: () => {
     return api.get("/ratings");
@@ -64,5 +71,6 @@ export default {
   ...adminApis,
   ...gameApis,
   ...gameParticipantApis,
-  ...ratingsApis
+  ...ratingsApis,
+  ...teamCombinationApis
 };

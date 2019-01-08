@@ -5,31 +5,42 @@ import classNames from "classnames";
 
 import "./Navbar.scss";
 import AdminLoginContainer from "nav/admin-login/AdminLoginContainer";
+import routes from "constants/routes";
 
 class Navbar extends Component {
+  privateRoutes = ["/rankings", "/matchmaking", "/teams"];
+
   shouldRenderPrivateLinks = () => {
     const { location } = this.props;
-    const pathname = location.pathname;
-    return pathname === "/rankings";
+    return this.privateRoutes.includes(location.pathname);
   };
 
   renderPrivateLinks = () => {
-    if (this.shouldRenderPrivateLinks()) {
-      return (
-        <>
-          <Link to="/rankings" className={this.getLinkClassNames("/rankings")}>
-            Rankings
-          </Link>
-        </>
-      );
+    if (!this.shouldRenderPrivateLinks()) {
+      return null;
     }
-    return null;
+    return (
+      <>
+        <Link
+          to={routes.RANKINGS}
+          className={this.getLinkClassNames([routes.RANKINGS])}
+        >
+          Rankings
+        </Link>
+        <Link
+          to={routes.MATCHMAKING}
+          className={this.getLinkClassNames([routes.MATCHMAKING, routes.TEAMS])}
+        >
+          Matchmaking
+        </Link>
+      </>
+    );
   };
 
-  getLinkClassNames = path => {
+  getLinkClassNames = activePaths => {
     const { location } = this.props;
     return classNames("navbar-item", {
-      "navbar-item--active": path === location.pathname
+      "navbar-item--active": activePaths.includes(location.pathname)
     });
   };
 
@@ -40,7 +51,10 @@ class Navbar extends Component {
       <nav className="navbar is-fixed-top">
         <div className="navbar-menu">
           <div className="navbar-start">
-            <Link to="/" className={this.getLinkClassNames("/")}>
+            <Link
+              to={routes.MATCH_HISTORY}
+              className={this.getLinkClassNames([routes.MATCH_HISTORY])}
+            >
               Match history
             </Link>
             {privateLinks}
