@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 import "LeagueTrackerWebapp.scss";
 import MatchHistoryContainer from "match-history/MatchHistoryContainer";
@@ -16,7 +16,7 @@ class LeagueTrackerWebapp extends Component {
 
   render() {
     return (
-      <Router>
+      <BrowserRouter>
         <>
           <Navbar />
           <div className="league-tracker-webapp__main-content">
@@ -31,7 +31,7 @@ class LeagueTrackerWebapp extends Component {
           </div>
           <Footer />
         </>
-      </Router>
+      </BrowserRouter>
     );
   }
 }
