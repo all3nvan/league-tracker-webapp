@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { withRouter } from "react-router";
+import classNames from "classnames";
 
 import "./Navbar.scss";
 import AdminLoginContainer from "nav/admin-login/AdminLoginContainer";
@@ -15,12 +16,21 @@ class Navbar extends Component {
   renderPrivateLinks = () => {
     if (this.shouldRenderPrivateLinks()) {
       return (
-        <Link to="/rankings" className="navbar-item">
-          Rankings
-        </Link>
+        <>
+          <Link to="/rankings" className={this.getLinkClassNames("/rankings")}>
+            Rankings
+          </Link>
+        </>
       );
     }
     return null;
+  };
+
+  getLinkClassNames = path => {
+    const { location } = this.props;
+    return classNames("navbar-item", {
+      "navbar-item--active": path === location.pathname
+    });
   };
 
   render() {
@@ -30,7 +40,7 @@ class Navbar extends Component {
       <nav className="navbar is-fixed-top">
         <div className="navbar-menu">
           <div className="navbar-start">
-            <Link to="/" className="navbar-item">
+            <Link to="/" className={this.getLinkClassNames("/")}>
               Match history
             </Link>
             {privateLinks}
